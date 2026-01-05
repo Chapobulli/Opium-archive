@@ -1,83 +1,59 @@
 # OPIUM ARCHIVE - Static Preorder Site
 
-Sito statico minimalista per testare il primo drop del brand con sistema preorder.
+Sito statico dark/gothic per preorder. Contatto unico: Instagram DM @opiumarchiveofficial.
+
+## ✨ Caratteristiche
+- Hero con GIF, sezioni con video/GIF di sfondo
+- Galleria prodotto con varianti colore (black, white, brown)
+- Form preorder con campi obbligatori: nome, email, colore, taglia (M-XXL)
+- Invio via Instagram DM: copia messaggio precompilato + link DM
+- Size guide modal (XXL su richiesta) e social proof counter
+- FAQ + sezione Terms & Conditions
+- CTA “Follow us” al posto della newsletter
+
+## 🧭 Dove modificare
+- Contatto IG: `script.js` (const igHandle) e link in footer/CTA
+- Immagini prodotto: `assets/product/` e array in `script.js` + thumbs in `index.html`
+- Background: `assets/images/hero.gif`, `assets/images/ec1b1dbf-434e-fa24-9f5e-f28f5b8673d6.gif`, `assets/videos/hero-video.mp4`
+- Testi principali: `index.html` (hero, features, prezzo)
+- FAQ/Terms: `faq.html` (ancora #terms)
 
 ## 🚀 Deploy rapido
+**Netlify (consigliato)**
+1) netlify.com → New site from Git o drag&drop cartella
+2) Build command: none, Publish dir: root
 
-### Opzione 1: Netlify (consigliato)
-1. Vai su [netlify.com](https://netlify.com)
-2. Drag & drop l'intera cartella `opium-static-site`
-3. Il sito sarà live in ~30 secondi
+**Vercel**: Importa repo/cartella, framework “Other”, build none, output root.
 
-### Opzione 2: Vercel
-1. Vai su [vercel.com](https://vercel.com)
-2. Import project dalla cartella
-3. Deploy automatico
+**GitHub Pages**: Settings → Pages → deploy from branch `main` root.
 
-### Opzione 3: GitHub Pages
-1. Crea repo GitHub e carica i file
-2. Settings > Pages > seleziona branch main
-3. Sito live su `username.github.io/repo-name`
+## 🔧 Flusso Instagram DM
+- Il form copia negli appunti il messaggio ordine (nome, email, phone, colore, taglia, note, timestamp)
+- Mostra il testo copiato e un bottone “APRI INSTAGRAM DM” verso `https://ig.me/m/opiumarchiveofficial?text=...`
+- Se clipboard fallisce, mostra il testo da copiare manualmente
 
-### Opzione 4: Surge.sh (più semplice)
-```bash
-npm install -g surge
-cd opium-static-site
-surge
-```
+## 🎨 Personalizzazione rapida
+- Colori tema: `style.css` variabili `:root`
+- Prezzo/nome/feature: `index.html` blocco product-info
+- Taglie: select e size guide in `index.html`
+- IG handle: cambia `igHandle` in `script.js`
+- Aggiungi altre foto colore: aggiorna thumbs + array `productImages` in `script.js`
 
-## 📧 Configurazione email preorder
+## 📂 Struttura media
+- `assets/product/` immagini prodotto e size chart (sizes.png)
+- `assets/images/` gif e backgrounds
+- `assets/videos/` video per sezioni
 
-Il form usa 3 opzioni (modifica in `script.js`):
+## 📜 Note
+- Nessuna email: contatto unico via Instagram DM
+- XXL misura su richiesta (nota in size guide)
+- Terms link: `faq.html#terms`
 
-**Opzione 1 (default): Mailto**
-- Apre client email del visitatore
-- Sostituisci `your-email@example.com` con la tua email
+## 🧪 Test rapido
+1) Apri index.html localmente
+2) Prova form con colore/taglia → verifica messaggio copiato e link IG
+3) Clicca Terms nel footer → scroll a sezione Terms in FAQ
+4) Clicca follow CTA → profilo IG
 
-**Opzione 2: Formspree (consigliato)**
-- Registrati gratis su [formspree.io](https://formspree.io)
-- Crea form e prendi l'ID
-- Sostituisci `YOUR_FORM_ID` in script.js
-- 50 submission/mese gratis
-
-**Opzione 3: EmailJS**
-- Registrati su [emailjs.com](https://emailjs.com)
-- Setup service + template
-- Aggiungi SDK e configura ID
-
-## 🎨 Personalizzazione
-
-### Immagine prodotto
-Sostituisci `<div class="placeholder-image">` in `index.html` con:
-```html
-<img src="tua-immagine.jpg" alt="Product" style="width: 100%">
-```
-
-### Colori
-Modifica le variabili in `style.css`:
-```css
-:root {
-    --color-bg: #000000;
-    --color-text: #ffffff;
-    --color-border: #2b2b2b;
-}
-```
-
-### Testi
-Modifica direttamente in `index.html`:
-- Nome prodotto: `.product-title`
-- Prezzo: `.product-price`
-- Features: `.product-features li`
-
-## 📱 Mobile-friendly
-Design responsive testato su tutti i device.
-
-## ⚡ Performance
-- 0 dipendenze
-- Solo Google Fonts
-- ~15KB totali
-- 100/100 Lighthouse score
-
-## 🔒 Privacy
-Nessun tracking, nessun cookie, zero JavaScript di terze parti (tranne Google Fonts opzionale).
-# Opium-archive
+## ⚡ Stack
+- HTML + CSS + JS vanilla, nessuna build/deps
