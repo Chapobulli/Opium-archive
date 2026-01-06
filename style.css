@@ -866,8 +866,17 @@ body {
     /* Prevent background GIF cropping in contact section on mobile */
     .contact-section {
         background-attachment: scroll !important;
-        background-size: cover !important;
-        background-position: center !important;
+        background-size: contain !important;
+        background-position: center top !important;
+        background-repeat: no-repeat !important;
+    }
+
+    /* Prevent background image cropping in newsletter section on mobile */
+    .newsletter-section {
+        background-attachment: scroll !important;
+        background-size: contain !important;
+        background-position: center top !important;
+        background-repeat: no-repeat !important;
     }
 
     .hero-title {
